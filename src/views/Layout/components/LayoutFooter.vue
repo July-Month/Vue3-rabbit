@@ -1,6 +1,4 @@
-<script setup>
-  const data = 0 
-</script>
+<script setup></script>
 
 <template>
   <footer class="app_footer">
@@ -8,7 +6,7 @@
     <div class="contact">
       <div class="container">
         <dl>
-          <dt>客户服务</dt> 
+          <dt>客户服务</dt>
           <dd><i class="iconfont icon-kefu"></i> 在线客服</dd>
           <dd><i class="iconfont icon-question"></i> 问题反馈</dd>
         </dl>
@@ -28,7 +26,9 @@
         </dl>
         <dl>
           <dt>服务热线</dt>
-          <dd class="hotline">400-0000-000 <small>周一至周日 8:00-18:00</small></dd>
+          <dd class="hotline">
+            400-0000-000 <small>周一至周日 8:00-18:00</small>
+          </dd>
         </dl>
       </div>
     </div>
@@ -67,7 +67,7 @@
   </footer>
 </template>
 
-<style scoped lang='scss'>
+<style scoped lang="scss">
 .app_footer {
   overflow: hidden;
   background-color: #f5f5f5;

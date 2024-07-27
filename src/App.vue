@@ -1,15 +1,16 @@
 <script setup>
-import { testGetCategory } from '@/api/test'
-const getCategory = async () => {
-  const res = await testGetCategory()
-  console.log(res)
-}
-getCategory()
+// import { testGetCategory } from '@/api/test'
+// const getCategory = async () => {
+//   const res = await testGetCategory()
+//   console.log(res)
+// }
+// getCategory()
 </script>
 
 <template>
   <!-- 一级路由出口 -->
   <router-view></router-view>
+  <div class="test"></div>
 </template>
 
 <style lang="scss" scoped>

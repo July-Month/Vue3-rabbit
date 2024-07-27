@@ -18,7 +18,7 @@ instance.interceptors.request.use(
 // 响应拦截器
 instance.interceptors.response.use(
   (res) => {
-    return res
+    return res.data
   },
   (err) => {
     return Promise.reject(err)
@@ -26,5 +26,3 @@ instance.interceptors.response.use(
 )
 
 export default instance
-
-

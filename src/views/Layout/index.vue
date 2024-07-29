@@ -17,6 +17,8 @@ categoryStore.getCategoryList()
   <!-- <LayoutHeader :categoryList="categoryStore.categoryList" /> -->
   <LayoutHeader />
   <!-- 二级路由出口 -->
+  <!-- 添加key 破坏复用机制 强制销毁重建-->
+  <!-- <router-view :key="$route.fullPath"></router-view> -->
   <router-view></router-view>
   <LayoutFooter />
 </template>

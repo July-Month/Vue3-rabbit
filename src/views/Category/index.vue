@@ -1,19 +1,23 @@
 <script setup>
-import { useRoute } from 'vue-router'
+import { onBeforeRouteUpdate, useRoute } from 'vue-router'
 import { getCategoryAPI } from '@/api/category'
 import { getBannerAPI } from '@/api/home'
-import { onMounted, ref } from 'vue'
+import { ref } from 'vue'
 import GoodsItem from '@/views/Home/components/GoodsItem.vue'
 const route = useRoute()
 console.log(route.params.id)
 
 const categoryData = ref({})
-const getCategory = async () => {
-  const res = await getCategoryAPI({ id: route.params.id })
+const getCategory = async (id = route.params.id) => {
+  const res = await getCategoryAPI({ id })
   categoryData.value = res.result
 }
-onMounted(() => {
-  getCategory()
+getCategory()
+
+// 目标：路由参数变化的时候，重新获取分类数据
+onBeforeRouteUpdate((to, from) => {
+  console.log(to, from)
+  getCategory(to.params.id)
 })
 
 // 获取banner

@@ -1,9 +1,14 @@
 import request from '@/utils/request'
 
 // 获取banner
-export const getBannerAPI = () => {
+export const getBannerAPI = (params = {}) => {
+  // 解构赋值的默认值， 默认为1，对象中有属性的话为对象中的属性
+  const { distributionSite = '1' } = params
   return request({
-    url: '/home/banner'
+    url: '/home/banner',
+    params: {
+      distributionSite
+    }
   })
 }
 

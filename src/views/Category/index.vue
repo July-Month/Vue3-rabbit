@@ -9,8 +9,8 @@ import GoodsItem from '@/views/Home/components/GoodsItem.vue'
 const { categoryData, getCategory } = useCategory()
 getCategory()
 // 目标：路由参数变化的时候，重新获取分类数据
-onBeforeRouteUpdate((to, from) => {
-  console.log(to, from)
+onBeforeRouteUpdate((to) => {
+  // console.log(to, from)
   getCategory(to.params.id)
 })
 
@@ -41,7 +41,7 @@ const { bannerList } = useBanner()
         <h3>全部分类</h3>
         <ul>
           <li v-for="i in categoryData.children" :key="i.id">
-            <RouterLink to="/">
+            <RouterLink :to="`/category/sub/${i.id}`">
               <img :src="i.picture" />
               <p>{{ i.name }}</p>
             </RouterLink>

@@ -23,9 +23,29 @@ const data = ref({
 })
 const getGoodList = async () => {
   const res = await getSubCategoryAPI(data.value)
-  goodList.value = res.result.items
+  goodList.value = [...goodList.value, ...res.result.items]
+  if (res.result.counts === goodList.value.length) {
+    // 停止监听
+    loading.value = true
+  }
 }
 getGoodList()
+// 切换tabs
+const tabChange = (e) => {
+  console.log(e, data.value.sortField)
+  data.value.page = 1
+  loading.value = false
+  getGoodList()
+}
+
+const loading = ref(false)
+// 触底加载事件
+const load = () => {
+  console.log('触底了')
+  // 获取下一页的数据
+  data.value.page++
+  getGoodList()
+}
 </script>
 
 <template>
@@ -41,12 +61,16 @@ getGoodList()
       </el-breadcrumb>
     </div>
     <div class="sub-container">
-      <el-tabs>
+      <el-tabs v-model="data.sortField" @tab-change="tabChange">
         <el-tab-pane label="最新商品" name="publishTime"></el-tab-pane>
         <el-tab-pane label="最高人气" name="orderNum"></el-tab-pane>
         <el-tab-pane label="评论最多" name="evaluateNum"></el-tab-pane>
       </el-tabs>
-      <div class="body">
+      <div
+        class="body"
+        v-infinite-scroll="load"
+        :infinite-scroll-disabled="loading"
+      >
         <!-- 商品列表-->
         <GoodsItem v-for="item in goodList" :key="item.id" :goods="item" />
       </div>

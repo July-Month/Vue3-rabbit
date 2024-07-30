@@ -1,20 +1,11 @@
 <script setup>
 import { getHotGoodsAPI } from '@/api/good'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { useRoute } from 'vue-router'
 const route = useRoute()
 const props = defineProps({
-  title: {
-    type: String,
-    required: true
-  },
   type: {
-    type: Number,
-    default: 1
-  },
-  goods: {
-    type: Array,
-    default: () => []
+    type: Number
   }
 })
 const goodList = ref([])
@@ -27,11 +18,18 @@ const getGoodList = async () => {
   goodList.value = res.result
 }
 getGoodList()
+
+// 适配title 1 - 24小时热榜 2- 周热榜
+const TYPEMAP = {
+  1: '24小时热榜',
+  2: '周热榜'
+}
+const title = computed(() => TYPEMAP[props.type])
 </script>
 
 <template>
   <div class="goods-hot">
-    <h3>{{ props.title }}</h3>
+    <h3>{{ title }}</h3>
     <!-- 商品区块 -->
     <RouterLink
       to="/"

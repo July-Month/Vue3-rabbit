@@ -132,8 +132,8 @@ getDetail()
             </div>
             <!-- 24热榜+专题推荐 -->
             <div class="goods-aside">
-              <DetailHot title="24小时热榜" />
-              <DetailHot title="周热榜" :type="2" />
+              <DetailHot :type="1" />
+              <DetailHot :type="2" />
             </div>
           </div>
         </div>

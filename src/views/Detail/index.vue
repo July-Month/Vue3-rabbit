@@ -2,6 +2,7 @@
 import { getGoodDetailAPI } from '@/api/good'
 import { ref } from 'vue'
 import { useRoute } from 'vue-router'
+import DetailHot from './components/DetailHot.vue'
 const route = useRoute()
 
 const detail = ref({})
@@ -63,7 +64,7 @@ getDetail()
                 </li>
                 <li>
                   <p>品牌信息</p>
-                  <p>{{ detail.brand.name }}</p>
+                  <p>{{ detail.brand?.name }}</p>
                   <p><i class="iconfont icon-dynamic-filling"></i>品牌主页</p>
                 </li>
               </ul>
@@ -112,7 +113,7 @@ getDetail()
                   <!-- 属性 -->
                   <ul class="attrs">
                     <li
-                      v-for="item in detail.details.properties"
+                      v-for="item in detail.details?.properties"
                       :key="item.value"
                     >
                       <span class="dt">{{ item.name }}</span>
@@ -121,7 +122,7 @@ getDetail()
                   </ul>
                   <!-- 图片 -->
                   <img
-                    v-for="item in detail.details.pictures"
+                    v-for="item in detail.details?.pictures"
                     :key="item"
                     :src="item"
                     alt=""
@@ -130,7 +131,10 @@ getDetail()
               </div>
             </div>
             <!-- 24热榜+专题推荐 -->
-            <div class="goods-aside"></div>
+            <div class="goods-aside">
+              <DetailHot title="24小时热榜" />
+              <DetailHot title="周热榜" :type="2" />
+            </div>
           </div>
         </div>
       </div>

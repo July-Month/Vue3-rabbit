@@ -4,14 +4,23 @@ import { ref } from 'vue'
 const formRef = ref()
 const form = ref({
   account: '',
-  password: ''
+  password: '',
+  agree: true
 })
+const valiAgree = (rules, value, callback) => {
+  if (!value) {
+    callback(new Error('请阅读并同意隐私条款和服务条款'))
+  } else {
+    callback()
+  }
+}
 const rules = {
   account: [{ required: true, message: '请输入帐号', trigger: 'blur' }],
   password: [
     { required: true, message: '请输入密码', trigger: 'blur' },
     { min: 6, max: 14, message: '密码为 6-14 个字符', trigger: 'blur' }
-  ]
+  ],
+  agree: [{ validator: valiAgree }]
 }
 </script>
 
@@ -50,8 +59,8 @@ const rules = {
               <el-form-item label="密码" prop="password">
                 <el-input v-model="form.password" />
               </el-form-item>
-              <el-form-item label-width="22px">
-                <el-checkbox size="large">
+              <el-form-item label-width="22px" prop="agree">
+                <el-checkbox size="large" v-model="form.agree">
                   我已同意隐私条款和服务条款
                 </el-checkbox>
               </el-form-item>

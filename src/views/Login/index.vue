@@ -1,4 +1,19 @@
-<script setup></script>
+<script setup>
+import { ref } from 'vue'
+
+const formRef = ref()
+const form = ref({
+  account: '',
+  password: ''
+})
+const rules = {
+  account: [{ required: true, message: '请输入帐号', trigger: 'blur' }],
+  password: [
+    { required: true, message: '请输入密码', trigger: 'blur' },
+    { min: 6, max: 14, message: '密码为 6-14 个字符', trigger: 'blur' }
+  ]
+}
+</script>
 
 <template>
   <div>
@@ -21,12 +36,19 @@
         </nav>
         <div class="account-box">
           <div class="form">
-            <el-form label-position="right" label-width="60px" status-icon>
-              <el-form-item label="账户">
-                <el-input />
+            <el-form
+              label-position="right"
+              label-width="60px"
+              status-icon
+              :model="form"
+              :rules="rules"
+              ref="formRef"
+            >
+              <el-form-item label="账户" prop="account">
+                <el-input v-model="form.account" />
               </el-form-item>
-              <el-form-item label="密码">
-                <el-input />
+              <el-form-item label="密码" prop="password">
+                <el-input v-model="form.password" />
               </el-form-item>
               <el-form-item label-width="22px">
                 <el-checkbox size="large">

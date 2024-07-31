@@ -3,8 +3,6 @@ import { getGoodDetailAPI } from '@/api/good'
 import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 import DetailHot from './components/DetailHot.vue'
-import ImageView from '@/components/ImageView/index.vue'
-import XtxSku from '@/components/XtxSku/index.vue'
 const route = useRoute()
 
 const detail = ref({})

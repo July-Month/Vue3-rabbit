@@ -1,6 +1,12 @@
 <script setup>
 import { useUserStore } from '@/stores'
+import { useRouter } from 'vue-router'
 const userStore = useUserStore()
+const router = useRouter()
+const logout = () => {
+  userStore.removeUser()
+  router.push('/login')
+}
 </script>
 
 <template>
@@ -19,6 +25,7 @@ const userStore = useUserStore()
               title="确认退出吗?"
               confirm-button-text="确认"
               cancel-button-text="取消"
+              @confirm="logout"
             >
               <template #reference>
                 <a href="javascript:;">退出登录</a>

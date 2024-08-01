@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
 import { useUserStore } from '@/stores'
+import router from '@/router'
 
 const baseURL = 'http://pcapi-xiaotuxian-front-devtest.itheima.net'
 
@@ -30,10 +31,18 @@ instance.interceptors.response.use(
   },
   (err) => {
     // 统一处理错误提示
+    console.log(111)
     ElMessage({
-      type: 'warning',
-      message: err.response.data.message
+      type: 'error',
+      message: err.response.data.message || '服务异常'
     })
+    // token失效处理
+    const userStore = useUserStore()
+
+    if (err.response.status === 401) {
+      userStore.removeUser()
+      router.push('/login')
+    }
     return Promise.reject(err)
   }
 )

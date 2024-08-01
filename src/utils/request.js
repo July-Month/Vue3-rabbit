@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { ElMessage } from 'element-plus'
 
 const baseURL = 'http://pcapi-xiaotuxian-front-devtest.itheima.net'
 
@@ -21,6 +22,11 @@ instance.interceptors.response.use(
     return res.data
   },
   (err) => {
+    // 统一处理错误提示
+    ElMessage({
+      type: 'warning',
+      message: err.response.data.message
+    })
     return Promise.reject(err)
   }
 )

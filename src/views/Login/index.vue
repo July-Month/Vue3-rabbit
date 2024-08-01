@@ -1,10 +1,13 @@
 <script setup>
 import { ref } from 'vue'
+import { loginAPI } from '@/api/user'
+import { useRouter } from 'vue-router'
+const router = useRouter()
 
 const formRef = ref()
 const form = ref({
-  account: '',
-  password: '',
+  account: '12056258282',
+  password: 'hm#qd@23!',
   agree: true
 })
 const valiAgree = (rules, value, callback) => {
@@ -24,6 +27,9 @@ const rules = {
 }
 const submitForm = async () => {
   await formRef.value.validate()
+  const res = await loginAPI(form.value)
+  ElMessage.success('登陆成功')
+  router.replace('/')
 }
 </script>
 

@@ -27,7 +27,7 @@ const enterHandler = (index) => {
 // 获取鼠标相对位置
 const target = ref(null)
 const { elementX, elementY, isOutside } = useMouseInElement(target)
-console.log(elementX, elementY)
+// console.log(elementX, elementY)
 
 // 控制滑块跟随鼠标移动(监听elementX/Y变化，一旦变化，重新设置 left/top)
 const left = ref(0)

@@ -32,7 +32,7 @@ const getGoodList = async () => {
 getGoodList()
 // 切换tabs
 const tabChange = (e) => {
-  console.log(e, data.value.sortField)
+  // console.log(e, data.value.sortField)
   data.value.page = 1
   loading.value = false
   getGoodList()
@@ -41,7 +41,7 @@ const tabChange = (e) => {
 const loading = ref(false)
 // 触底加载事件
 const load = () => {
-  console.log('触底了')
+  // console.log('触底了')
   // 获取下一页的数据
   data.value.page++
   getGoodList()

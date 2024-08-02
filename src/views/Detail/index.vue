@@ -19,13 +19,13 @@ getDetail()
 // sku规格被操作时
 const skuObj = ref({})
 const skuChange = (sku) => {
-  console.log(sku)
+  // console.log(sku)
   skuObj.value = sku
 }
 
 const count = ref(1)
 const countChange = (count) => {
-  console.log(count)
+  // console.log(count)
 }
 
 // 添加购物车

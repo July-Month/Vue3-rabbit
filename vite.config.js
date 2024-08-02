@@ -16,8 +16,10 @@ export default defineConfig({
       resolvers: [ElementPlusResolver()]
     }),
     Components({
-      // 1. 配置 ElementPlus采用sass样式配色系统 这个可以配合 css选项使用
-      resolvers: [ElementPlusResolver({ importStyle: 'sass' })]
+      resolvers: [
+        // 1. 配置 ElementPlus采用sass样式配色系统 这个可以配合 css选项使用
+        ElementPlusResolver({ importStyle: 'sass' })
+      ]
       // resolvers: [ElementPlusResolver()]
     })
     // 2.按需定制主题配置

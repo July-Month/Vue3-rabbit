@@ -21,6 +21,11 @@ export const useCartStore = defineStore(
       cartList.value = cartList.value.filter((item) => item.skuId !== skuId)
     }
 
+    // 单选功能
+    const singleCheck = (selected, skuId) => {
+      cartList.value.find((item) => item.skuId === skuId).selected = selected
+    }
+
     // 总数
     const total = computed(() => {
       return cartList.value.reduce((sum, item) => sum + item.count, 0)
@@ -34,10 +39,11 @@ export const useCartStore = defineStore(
 
     return {
       cartList,
+      total,
+      totalPrice,
       addCart,
       delCart,
-      total,
-      totalPrice
+      singleCheck
     }
   },
   {

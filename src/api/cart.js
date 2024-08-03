@@ -8,10 +8,37 @@ import request from '@/utils/request'
    } 
   * @returns
  */
-export const editCart = (data) => {
+export const editCartAPI = (data) => {
   return request({
     url: `/member/cart/${data.id}`,
     method: 'put',
     data
+  })
+}
+
+/**
+ * @description: 加入购物车
+ * @data { 
+     skuId:  // 商品sku的id
+     count: 1 // 数量
+   } 
+  * @returns
+ */
+export const insertCartAPI = (data) => {
+  return request({
+    url: '/member/cart',
+    method: 'POST',
+    data
+  })
+}
+
+/**
+ * @description: 获取购物车列表
+ * @params {*}
+ * @returns
+ */
+export const getCartListAPI = () => {
+  return request({
+    url: '/member/cart'
   })
 }

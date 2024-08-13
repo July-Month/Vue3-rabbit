@@ -57,3 +57,27 @@ export const delCartAPI = (data) => {
     data
   })
 }
+
+/**
+ * @description: 合并购物车
+ * @data: [
+  {
+    "skuId": "3672100",  商品sku的id
+    "selected": "true",  商品选中状态
+    "count": 10  商品数量
+  },
+  {
+    "skuId": "300038064",
+    "selected": "true",
+    "count": 101
+  }
+]
+  * @returns
+ */
+export const mergeCartAPI = (data) => {
+  return request({
+    url: '/member/cart/merge',
+    method: 'post',
+    data
+  })
+}

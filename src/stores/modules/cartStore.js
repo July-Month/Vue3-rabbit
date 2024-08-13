@@ -47,6 +47,10 @@ export const useCartStore = defineStore(
         cartList.value = cartList.value.filter((item) => item.skuId !== skuId)
       }
     }
+    // 清除购物车
+    const clearCart = () => {
+      cartList.value = []
+    }
 
     // 单选功能
     const singleCheck = (selected, skuId) => {
@@ -93,7 +97,8 @@ export const useCartStore = defineStore(
       addCart,
       delCart,
       singleCheck,
-      allCheck
+      allCheck,
+      clearCart
     }
   },
   {

@@ -42,3 +42,18 @@ export const getCartListAPI = () => {
     url: '/member/cart'
   })
 }
+
+/**
+ * @description: 删除购物车
+ * @data: {
+    ids:  // array[string] 商品sku的id集合
+    }
+  * @returns
+ */
+export const delCartAPI = (data) => {
+  return request({
+    url: '/member/cart',
+    method: 'delete',
+    data
+  })
+}

@@ -3,7 +3,7 @@ import { getGoodDetailAPI } from '@/api/good'
 import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 import DetailHot from './components/DetailHot.vue'
-import { useCartStore } from '@/stores/modules/cart'
+import { useCartStore } from '@/stores/modules/cartStore'
 const route = useRoute()
 const cartStore = useCartStore()
 

@@ -23,11 +23,17 @@ const getOrder = async () => {
   orderList.value = res.result.items
 }
 getOrder()
+
+// tab切换
+const tabChange = (active) => {
+  params.value.orderState = active
+  getOrder()
+}
 </script>
 
 <template>
   <div class="order-container">
-    <el-tabs>
+    <el-tabs @tab-change="tabChange">
       <!-- tab切换 -->
       <el-tab-pane
         v-for="item in tabTypes"
